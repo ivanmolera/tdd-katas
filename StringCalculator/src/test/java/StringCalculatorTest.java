@@ -69,4 +69,11 @@ public class StringCalculatorTest
     {
         calculator.add("1,2,-3");
     }
+
+    @Test
+    public void whenInputHasBigNumberThenShouldBeIgnored() throws NegativeNotAllowedException
+    {
+        int result = calculator.add("2,1001");
+        assertTrue(result == 2);
+    }
 }

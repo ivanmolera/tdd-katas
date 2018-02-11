@@ -18,7 +18,7 @@ public class StringCalculator
             String delimitersRegex = getDelimitersRegex(numbers);
             String[] splittedString = this.numbers.split(delimitersRegex);
 
-            checkNegativeValues(splittedString);
+            splittedString = checkNegativesAndReplaceBigValues(splittedString);
 
             List<String> numbersList = new ArrayList<>(Arrays.asList(splittedString));
             returnValue = numbersList.stream().mapToInt(Integer::parseInt).sum();
@@ -37,14 +37,20 @@ public class StringCalculator
         return regex;
     }
 
-    private void checkNegativeValues(String[] values) throws NegativeNotAllowedException {
+    private String[] checkNegativesAndReplaceBigValues(String[] values) throws NegativeNotAllowedException {
         String negativeValues = null;
-        for (String num : values) {
+        for (int i = 0; i <= values.length-1; i++) {
+            String num = values[i];
             Integer value = new Integer(num);
             if(value.intValue() < 0) {
                 negativeValues += " " + num;
             }
+            else if(value.intValue() > 1000) {
+                values[i] = "0";
+            }
         }
         if(negativeValues != null) throw new NegativeNotAllowedException("negatives not allowed" + negativeValues);
+
+        return values;
     }
 }
