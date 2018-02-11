@@ -1,5 +1,6 @@
 package test.java;
 
+import main.java.NegativeNotAllowedException;
 import main.java.StringCalculator;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,21 +17,21 @@ public class StringCalculatorTest
     }
 
     @Test
-    public void whenEmptyStringThenReturnValueIsZero()
+    public void whenEmptyStringThenReturnValueIsZero() throws NegativeNotAllowedException
     {
         int result = calculator.add("");
         assertTrue(result == 0);
     }
 
     @Test
-    public void whenOneNumberThenReturnValueIsTheNumber()
+    public void whenOneNumberThenReturnValueIsTheNumber() throws NegativeNotAllowedException
     {
         int result = calculator.add("25");
         assertTrue(result == 25);
     }
 
     @Test
-    public void whenTwoNumbersThenReturnItsSum()
+    public void whenTwoNumbersThenReturnItsSum() throws NegativeNotAllowedException
     {
         int result = calculator.add("2,2");
         assertTrue(result == 4);
@@ -40,7 +41,7 @@ public class StringCalculatorTest
     }
 
     @Test
-    public void whenUnkownAmountOfNumbersThenReturnItsSum()
+    public void whenUnkownAmountOfNumbersThenReturnItsSum() throws NegativeNotAllowedException
     {
         int result = calculator.add("2,2,2,2");
         assertTrue(result == 8);
@@ -50,14 +51,22 @@ public class StringCalculatorTest
     }
 
     @Test
-    public void whenInputIsCorrectThenCorrectValueReturned() {
+    public void whenInputIsCorrectThenCorrectValueReturned() throws NegativeNotAllowedException
+    {
         int result = calculator.add("1\n2,3");
         assertTrue(result == 6);
     }
 
     @Test
-    public void whenInputHasCustomDelimiterThenCorrectValueReturned() {
+    public void whenInputHasCustomDelimiterThenCorrectValueReturned() throws NegativeNotAllowedException
+    {
         int result = calculator.add("//;\n1;2");
         assertTrue(result == 3);
+    }
+
+    @Test(expected = NegativeNotAllowedException.class)
+    public void whenInputHasNegativesThenExceptionIsThrown() throws NegativeNotAllowedException
+    {
+        calculator.add("1,2,-3");
     }
 }
