@@ -15,13 +15,10 @@ public class StringCalculator
         if(!"".equals(numbers)) {
             List<String> numbersList = new ArrayList<>();
 
-            String[] commaSeparatedNums = numbers.split(COMMA_SEPARATOR);
-            for (String num : commaSeparatedNums)
-            {
-                String[] newlineSeparatedNums = num.split(NEWLINE_SEPARATOR);
-                numbersList.addAll(Arrays.asList(newlineSeparatedNums));
-            }
+            String regex = COMMA_SEPARATOR + "|" + NEWLINE_SEPARATOR;
 
+            String[] splittedString = numbers.split(regex);
+            numbersList.addAll(Arrays.asList(splittedString));
             returnValue = numbersList.stream().mapToInt(Integer::parseInt).sum();
         }
         return returnValue;

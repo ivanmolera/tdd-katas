@@ -25,10 +25,7 @@ public class StringCalculatorTest
     @Test
     public void whenOneNumberThenReturnValueIsTheNumber()
     {
-        int result = calculator.add("1");
-        assertTrue(result == 1);
-
-        result = calculator.add("25");
+        int result = calculator.add("25");
         assertTrue(result == 25);
     }
 
@@ -38,14 +35,8 @@ public class StringCalculatorTest
         int result = calculator.add("2,2");
         assertTrue(result == 4);
 
-        result = calculator.add("25,25");
-        assertTrue(result == 50);
-
         result = calculator.add("2\n2");
         assertTrue(result == 4);
-
-        result = calculator.add("25\n25");
-        assertTrue(result == 50);
     }
 
     @Test
@@ -54,19 +45,13 @@ public class StringCalculatorTest
         int result = calculator.add("2,2,2,2");
         assertTrue(result == 8);
 
-        result = calculator.add("25,25");
-        assertTrue(result == 50);
-
-        result = calculator.add("1,1,1,1,1,1,1,1,1,1");
-        assertTrue(result == 10);
-
         result = calculator.add("2\n2\n2\n2");
         assertTrue(result == 8);
+    }
 
-        result = calculator.add("25\n25");
-        assertTrue(result == 50);
-
-        result = calculator.add("1\n1\n1\n1\n1\n1\n1\n1\n1\n1");
-        assertTrue(result == 10);
+    @Test
+    public void whenInputIsCorrectThenCorrectValueReturned() {
+        int result = calculator.add("1\n2,3");
+        assertTrue(result == 6);
     }
 }
