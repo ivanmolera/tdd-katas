@@ -54,4 +54,10 @@ public class StringCalculatorTest
         int result = calculator.add("1\n2,3");
         assertTrue(result == 6);
     }
+
+    @Test
+    public void whenInputHasCustomDelimiterThenCorrectValueReturned() {
+        int result = calculator.add("//;\n1;2");
+        assertTrue(result == 3);
+    }
 }
