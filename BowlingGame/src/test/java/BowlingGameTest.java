@@ -1,4 +1,4 @@
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,16 +25,20 @@ public class BowlingGameTest {
         g.roll(4);
     }
 
+    private void rollStrike() {
+        g.roll(10);
+    }
+
     @Test
     public void testGutterGame() throws Exception {
         rollMany(20, 0);
-        Assert.assertEquals(0, g.score());
+        assertEquals(0, g.score());
     }
 
     @Test
     public void testAllOnes() throws Exception {
         rollMany(20, 1);
-        Assert.assertEquals(20, g.score());
+        assertEquals(20, g.score());
     }
 
     @Test
@@ -42,6 +46,21 @@ public class BowlingGameTest {
         rollSpare();
         g.roll(3);
         rollMany(17, 0);
-        Assert.assertEquals(16, g.score());
+        assertEquals(16, g.score());
+    }
+
+    @Test
+    public void testOneStrike() throws Exception {
+        rollStrike();
+        g.roll(3);
+        g.roll(4);
+        rollMany(16, 0);
+        assertEquals(24, g.score());
+    }
+
+    @Test
+    public void testPerfectGame() throws Exception {
+        rollMany(12, 10);
+        assertEquals(300, g.score());
     }
 }
