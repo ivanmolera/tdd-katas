@@ -46,4 +46,10 @@ public class PrimeFactorsTest {
         List<Integer> factors = PrimeFactors.of(6);
         Assert.assertArrayEquals(new Integer[]{2, 3}, factors.toArray());
     }
+
+    @Test
+    public void of_7is7() throws Exception {
+        List<Integer> factors = PrimeFactors.of(7);
+        Assert.assertArrayEquals(new Integer[]{7}, factors.toArray());
+    }
 }
