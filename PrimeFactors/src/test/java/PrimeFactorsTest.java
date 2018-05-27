@@ -23,4 +23,9 @@ public class PrimeFactorsTest {
         Assert.assertTrue(factors.size() == 1 && factors.get(0) == 2);
     }
 
+    @Test
+    public void of_3is3() throws Exception {
+        List<Integer> factors = PrimeFactors.of(3);
+        Assert.assertTrue(factors.size() == 1 && factors.get(0) == 3);
+    }
 }

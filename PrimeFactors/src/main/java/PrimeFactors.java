@@ -11,8 +11,8 @@ public class PrimeFactors {
     public static List<Integer> of(Integer number) {
         List<Integer> factors = new ArrayList<>();
 
-        if(number == 2) {
-            factors.add(2);
+        if(number > 1) {
+            factors.add(number);
         }
 
         return factors;
