@@ -10,16 +10,9 @@ public class PrimeFactors {
 
     public static List<Integer> of(Integer number) {
         List<Integer> factors = new ArrayList<>();
-
-        Integer divisor = 2;
-        while(number > 1) {
-            while(number % divisor == 0) {
+        for(int divisor = 2; number > 1; divisor++)
+            for( ; number % divisor == 0; number /= divisor)
                 factors.add(divisor);
-                number /= divisor;
-            }
-            divisor++;
-        }
-
         return factors;
     }
 }
