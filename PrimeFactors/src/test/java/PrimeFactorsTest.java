@@ -16,4 +16,11 @@ public class PrimeFactorsTest {
         List<Integer> factors = PrimeFactors.of(1);
         Assert.assertTrue(factors.size() == 0);
     }
+
+    @Test
+    public void of_2is2() throws Exception {
+        List<Integer> factors = PrimeFactors.of(2);
+        Assert.assertTrue(factors.size() == 1 && factors.get(0) == 2);
+    }
+
 }

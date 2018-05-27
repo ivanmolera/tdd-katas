@@ -9,6 +9,12 @@ import java.util.List;
 public class PrimeFactors {
 
     public static List<Integer> of(Integer number) {
-        return new ArrayList<>();
+        List<Integer> factors = new ArrayList<>();
+
+        if(number == 2) {
+            factors.add(2);
+        }
+
+        return factors;
     }
 }
