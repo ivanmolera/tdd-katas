@@ -52,4 +52,10 @@ public class PrimeFactorsTest {
         List<Integer> factors = PrimeFactors.of(7);
         Assert.assertArrayEquals(new Integer[]{7}, factors.toArray());
     }
+
+    @Test
+    public void of_8is2_2_2() throws Exception {
+        List<Integer> factors = PrimeFactors.of(8);
+        Assert.assertArrayEquals(new Integer[]{2, 2, 2}, factors.toArray());
+    }
 }
