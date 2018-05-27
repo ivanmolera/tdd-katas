@@ -28,4 +28,11 @@ public class PrimeFactorsTest {
         List<Integer> factors = PrimeFactors.of(3);
         Assert.assertTrue(factors.size() == 1 && factors.get(0) == 3);
     }
+
+    @Test
+    public void of_4is2_2() throws Exception {
+        List<Integer> factors = PrimeFactors.of(4);
+        Assert.assertTrue(factors.size() == 2);
+        Assert.assertArrayEquals(new Integer[]{2, 2}, factors.toArray());
+    }
 }
