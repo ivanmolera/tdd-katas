@@ -11,13 +11,13 @@ public class PrimeFactors {
     public static List<Integer> of(Integer number) {
         List<Integer> factors = new ArrayList<>();
 
-        while(number % 2 == 0) {
-            factors.add(2);
-            number /= 2;
-        }
-
-        if(number > 1) {
-            factors.add(number);
+        Integer divisor = 2;
+        while(number > 1) {
+            while(number % divisor == 0) {
+                factors.add(divisor);
+                number /= divisor;
+            }
+            divisor++;
         }
 
         return factors;
